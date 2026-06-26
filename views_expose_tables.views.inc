@@ -45,6 +45,13 @@ function views_expose_tables_views_data() {
           'title' => $table,
           'weight' => -10,
         );
+      // otherwise use the first column (e.g. for database views which cannot have a primary key)
+      } elseif (isset($fields[0]->Field)) {
+        $data[$table]['table']['base'] = array(
+          'field' => $fields[0]->Field,
+          'title' => $table,
+          'weight' => -10,
+        );
       }
 
       //run through fields and make default settings
