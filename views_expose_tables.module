@@ -19,19 +19,19 @@ function views_expose_tables_config_info() {
  * Implements hook_menu().
  */
 function views_expose_tables_menu() {
-  $items['admin/structure/views/expose_tables'] = array( 
-   'title' => 'Views Expose Tables', 
-   'description' => 'Configuration for the Views Expose Table module.', 
+  $items['admin/structure/views/expose_tables'] = array(
+   'title' => 'Views Expose Tables',
+   'description' => 'Configuration for the Views Expose Table module.',
    'page callback' => 'backdrop_get_form',
-   'page arguments' => array('views_expose_tables_admin_form'), 
+   'page arguments' => array('views_expose_tables_admin_form'),
    'access arguments' => array('administer site configuration'),
-   'type' => MENU_NORMAL_ITEM, 
+   'type' => MENU_LOCAL_ACTION,
 	);
 
   return $items;
 }
 
-/** 
+/**
  * Page callback for admin form.
  */
 function views_expose_tables_admin_form($form, &$form_state) {
@@ -73,7 +73,7 @@ function views_expose_tables_admin_form($form, &$form_state) {
 
 }
 
-/** 
+/**
  * Submit handler for Views Expose Table admin config page
  *
  * @see views_expose_tables_admin_form().

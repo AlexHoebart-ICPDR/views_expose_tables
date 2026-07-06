@@ -56,7 +56,13 @@ function views_expose_tables_views_data() {
 
       //run through fields and make default settings
       foreach ($fields as $field) {
-        if (stristr($field->Type, "int")
+        if (strpos($field->Type, 'enum') === 0) {
+          $filter_handler = 'views_handler_filter_string';
+          $sort_handler = 'views_handler_sort';
+          $field_handler = 'views_handler_field';
+          $argument_handler = 'views_handler_argument_string';
+        }
+        elseif (stristr($field->Type, "int")
           || stristr($field->Type, "float")
           || stristr($field->Type, "double")
           || stristr($field->Type, "decimal")
